@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import {
   createAuthUserWithEmailAndPassword,
-  createUserDocumentFromAuth
+  createUserDocumentFromAuth,
 } from 'utils/firebase.utils';
 import FormInput from 'component/form-input/form-input.component';
 import './sign-up-form.styles.scss';
@@ -11,7 +11,7 @@ const defaultFormFields = {
   displayName: '',
   email: '',
   password: '',
-  confirmPassword: ''
+  confirmPassword: '',
 };
 
 const SignUpForm = () => {
@@ -32,7 +32,10 @@ const SignUpForm = () => {
     }
 
     try {
-      const { user } = await createAuthUserWithEmailAndPassword(email, password);
+      const { user } = await createAuthUserWithEmailAndPassword(
+        email,
+        password,
+      );
       await createUserDocumentFromAuth(user, { displayName });
       setFormFields({ ...defaultFormFields });
     } catch (error) {
@@ -44,7 +47,7 @@ const SignUpForm = () => {
 
   return (
     <div className="sign-up-container">
-      <h2>Don't have an account?</h2>
+      <h2>Don&apos;t have an account ?</h2>
       <span>Sign up with your email and password</span>
       <form onSubmit={handleSubmit}>
         <FormInput
