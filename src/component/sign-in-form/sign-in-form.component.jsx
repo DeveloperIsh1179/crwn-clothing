@@ -5,8 +5,11 @@ import {
   signInWithGooglePopup,
   signInAuthUserWithEmailAndPassword,
 } from 'utils/firebase.utils';
-
-import './sign-in-form.styles.scss';
+import {
+  ButtonsContainer,
+  H2,
+  SignInContainer,
+} from './sign-in-form.styles.jsx';
 
 const defaultFormFields = {
   email: '',
@@ -38,8 +41,8 @@ const SignInForm = () => {
   };
 
   return (
-    <div className="sign-in-container">
-      <h2>Already have an account?</h2>
+    <SignInContainer>
+      <H2>Already have an account?</H2>
       <span>Sign in with your email and password</span>
       <form onSubmit={handleSubmit}>
         <FormInput
@@ -58,7 +61,7 @@ const SignInForm = () => {
           value={password}
           onChange={handleOnChange}
         />
-        <div className="buttons-container">
+        <ButtonsContainer>
           <Button type="submit">Sign In</Button>
           <Button
             onClick={signInWithGoogle}
@@ -66,9 +69,9 @@ const SignInForm = () => {
           >
             Google Sign In
           </Button>
-        </div>
+        </ButtonsContainer>
       </form>
-    </div>
+    </SignInContainer>
   );
 };
 
