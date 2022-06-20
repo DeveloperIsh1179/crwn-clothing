@@ -7,6 +7,7 @@ import {
 import { useContext, useEffect } from 'react';
 import { CartContext } from 'contexts/cart.context';
 import CheckoutItem from 'component/checkout-item/checkout-item.component';
+import PaymentForm from 'component/payment-form/payment-form.component.jsx';
 
 const Checkout = () => {
   const { cartItems, cartTotal, setIsCartOpen } = useContext(CartContext);
@@ -38,6 +39,8 @@ const Checkout = () => {
         <CheckoutItem key={cartItem.id} cartItem={cartItem} />
       ))}
       <Total>Total: ${cartTotal}</Total>
+      <br />
+      <PaymentForm />
     </CheckoutContainer>
   );
 };
