@@ -7,14 +7,15 @@ import {
   NavLinksContainer,
   NavLink,
 } from './navigation.styles.jsx';
-import { UserContext } from 'contexts/user.context';
+import { useSelector } from 'react-redux';
+import { selectCurrentUser } from 'store/user/user.selector.js';
 import { signOutAuth } from 'utils/firebase.utils';
 import CartIcon from 'component/cart-icon/cart-icon.component';
 import CartDropdown from 'component/cart-dropdown/cart-dropdown.component';
 import { CartContext } from 'contexts/cart.context';
 
 const Navigation = () => {
-  const { currentUser } = useContext(UserContext);
+  const currentUser = useSelector(selectCurrentUser);
   const { isCartOpen } = useContext(CartContext);
 
   const signOutHandler = async () => {
